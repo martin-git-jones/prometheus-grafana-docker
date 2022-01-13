@@ -1,0 +1,43 @@
+version: '3'
+services:
+  linuxsrv1:
+    build: ./linuxsrv1
+    tty: true
+    networks:
+      - mailgun
+  linuxsrv2:
+    build: ./linuxsrv2
+    tty: true
+    networks:
+      - mailgun
+  linuxsrv3:
+    build: ./linuxsrv3
+    tty: true
+    networks:
+      - mailgun
+  pingapp:
+    build: pingapp
+    ports:
+      - 5000:5000
+    hostname: pingapp
+    networks:
+      - mailgun
+  prometheus:
+    build: prometheus
+    ports:
+      - 9092:9090
+    hostname: prometheus
+    networks:
+      - mailgun
+  grafana:
+     build: ./grafana
+     ports:
+        - 3000:3000
+     hostname: grafana
+     depends_on:
+      - prometheus
+     networks:
+      - mailgun
+networks:
+  mailgun: 
+
