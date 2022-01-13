@@ -4,31 +4,31 @@ services:
     build: ./linuxsrv1
     tty: true
     networks:
-      - mailgun
+      - mailpony
   linuxsrv2:
     build: ./linuxsrv2
     tty: true
     networks:
-      - mailgun
+      - mailpony
   linuxsrv3:
     build: ./linuxsrv3
     tty: true
     networks:
-      - mailgun
+      - mailpony
   pingapp:
     build: pingapp
     ports:
       - 5000:5000
     hostname: pingapp
     networks:
-      - mailgun
+      - mailpony
   prometheus:
     build: prometheus
     ports:
       - 9092:9090
     hostname: prometheus
     networks:
-      - mailgun
+      - mailpony
   grafana:
      build: ./grafana
      ports:
@@ -37,7 +37,7 @@ services:
      depends_on:
       - prometheus
      networks:
-      - mailgun
+      - mailpony
 networks:
-  mailgun: 
+  mailpony: 
 
