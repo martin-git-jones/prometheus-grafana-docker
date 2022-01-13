@@ -12,10 +12,12 @@ curl -X POST http://admin:admin@localhost:3000/api/user/using/2
 # Now get an API key
 curl -X POST -H "Content-Type: application/json" -d '{"name":"apikeycurl", "role": "Admin"}' http://admin:admin@localhost:3000/api/auth/keys
 
-# Example output showing the key
+# Example output showing an example key
+# Yours will be different
 {"id":1,"name":"apikeycurl","key":"eyJrIjoienlDMjZWS1VkaHhqZWE2VHFCRkVrdkFYUlZkRnI2NGEiLCJuIjoiYXBpa2V5Y3VybCIsImlkIjoyfQ=="}
 
 # Use this key to import the JSON for the dashboard
+# Remember to change the example key to the one you obtained above
 curl -X POST --insecure -H "Authorization: Bearer eyJrIjoienlDMjZWS1VkaHhqZWE2VHFCRkVrdkFYUlZkRnI2NGEiLCJuIjoiYXBpa2V5Y3VybCIsImlkIjoyfQ==" -H "Content-Type: application/json" -d '{
 "dashboard": {
   "annotations": {
